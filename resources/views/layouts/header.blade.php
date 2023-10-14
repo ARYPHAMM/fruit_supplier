@@ -276,7 +276,7 @@
             aria-expanded="false"
           >
             <img
-              src="../assets/admin/images/users/1.jpg"
+              src="../assets/matrix-theme/images/users/1.jpg"
               alt="user"
               class="rounded-circle"
               width="31"

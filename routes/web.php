@@ -12,11 +12,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'AuthController@login')->name('login');
-Route::post('/login', 'AuthController@postLogin')->name('post-login');
-Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::get('/home', function () {
   return view('home');
-})->name('home');
-Route::resource('categories', 'CategoryController')->except(['create','edit','update', 'show']);
-Route::get('categories/edit/{category?}','CategoryController@edit')->name('categories.edit');
+})->name('home')->middleware('auth');
+// start auth
+Route::get('/', 'AuthController@login')->name('login');
+Route::post('/login', 'AuthController@postLogin')->name('post-login');
+Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth');
+// end auth
+// start category
+Route::resource('categories', 'CategoryController')->except(['create', 'edit', 'update', 'show'])->middleware('auth');
+Route::get('categories/edit/{category?}', 'CategoryController@edit')->name('categories.edit')->middleware('auth');
+// end category
+// start product
+Route::resource('products', 'ProductController')->except(['create', 'edit', 'update', 'show'])->middleware('auth');
+Route::get('products/edit/{product?}', 'ProductController@edit')->name('products.edit')->middleware('auth');
+// end product

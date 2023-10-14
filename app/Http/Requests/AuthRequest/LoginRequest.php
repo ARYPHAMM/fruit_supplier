@@ -12,34 +12,30 @@ class LoginRequest extends FormRequest
      *
      * @return bool
      */
-    // protected $redirect = '/dang-nhap';
-
-
-      protected function failedValidation(Validator $validator)
+    protected $redirect = '/';
+    protected function failedValidation(Validator $validator)
     {
-        session()->flash('error', 'Vui lòng kiểm tra lại thông tin');
+        session()->flash('error', 'Please check login infor');
         return parent::failedValidation($validator);
     }
-
     public function authorize()
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
     public function rules()
-    {        $this->redirect = url()->previous();
-
+    {
+        $this->redirect = url()->previous();
         return [
-            'email' => 'required',
+            'email' => 'required|email|exists:users,email',
             'password' => [
                 'required',
                 'min:6',
-                'max:25',             
+                'max:25',
             ]
         ];
     }
