@@ -1,0 +1,223 @@
+.item-image {
+    height: 100px;
+    width: 100px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.text-active {
+    color: green;
+}
+
+.text-pending {
+    color: red;
+}
+
+.text-default {
+    color: purple;
+}
+
+.text-close {
+    color: blue;
+}
+
+.box-pic {
+    width: 200px;
+    max-width: 100%;
+    height: 120px;
+    line-height: 120px;
+    font-size: 30px;
+    color: #999;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 0 10px 0;
+    position: relative;
+}
+
+.box-pic img {
+    max-width: 100%;
+    max-height: 100%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+span.close-top-right {
+    position: absolute;
+    right: 4px;
+    top: 3px;
+    display: flex;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.close-top-right+img {
+    max-width: fit-content;
+    max-height: 100%;
+    transform: unset;
+    position: relative;
+    top: auto;
+    left: unset;
+    height: 100%;
+    width: 100%;
+    vertical-align: revert;
+}
+
+.table .thead-dark th {
+    color: #fff;
+    background-color: #212529;
+    border-color: #32383e;
+}
+
+.left-font-size {
+    font-size: 12.5px;
+}
+
+.list-specific span:not(:last-child)::after {
+    content: ', ';
+}
+
+.list-specific-dash span:not(:last-child)::after {
+    content: ' - ';
+}
+
+.question-image {
+    height: 150px;
+    object-fit: contain;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.left-sidebar {
+    width: 260px !important;
+}
+
+#navbarSupportedContent {
+    background-color: #1f262d !important;
+
+}
+
+/* Customize the label (the container) */
+.radio-check {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio-check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-check:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-check input:checked~.checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-check input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-check .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.anwers-ontap {
+    margin: 20px 0;
+}
+
+.anwers-ontap .radio-check {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px 15px 15px 50px;
+    font-size: 16px;
+}
+
+.anwers-ontap .checkmark {
+    top: 13px;
+    left: 15px;
+}
+
+.clear {
+    clear: both;
+}
+.h-100vh{
+    height: 100vh;
+}
+.upload__avatar .item__thumbnail {
+    width: 100px;
+    margin: 0;
+  }
+  
+  .upload__avatar .item__thumbnail img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  
+  .upload__avatar .item__file {
+    width: calc(100% - 100px);
+  }
+  .preview-image{
+    height: 100px;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }

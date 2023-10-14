@@ -11,5 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+ mix.disableNotifications()
+ .browserSync({
+            // fixes pagination urls otherwise they get re-written to use the service `container_name`...
+            host: 'localhost',
+            // service container_name...
+            proxy: 'dev_web_fruit_supplier', 
+            // matches the port number exposed earlier...
+            port: 3000, 
+            open: false,
+ });
