@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,10 +11,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', 'AuthController@login')->name('login');
 Route::post('/login', 'AuthController@postLogin')->name('post-login');
 Route::get('/logout', 'AuthController@logout')->name('logout');
-Route::get('/home', function(){
+Route::get('/home', function () {
   return view('home');
 })->name('home');
-
+Route::resource('categories', 'CategoryController')->except(['create','edit','update', 'show']);
+Route::get('categories/edit/{category?}','CategoryController@edit')->name('categories.edit');

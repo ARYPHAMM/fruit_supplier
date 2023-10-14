@@ -3,16 +3,16 @@
   <div class="scroll-sidebar">
       <!-- Sidebar navigation-->
       <nav class="sidebar-nav">
-          {{-- <ul id="sidebarnav" class="pt-4">
+          <ul id="sidebarnav" class="pt-4">
               <li class="sidebar-item">
-                  <a class="sidebar-link waves-effect waves-dark sidebar-link {{ checkUrlActive(route('admin-index-category')) }}"
-                      href="{{ route('admin-index-category') }}" aria-expanded="false">
+                  <a class="sidebar-link waves-effect waves-dark sidebar-link {{ checkUrlActive([route('categories.index'), route('categories.edit')]) ? 'selected' : '' }}"
+                      href="{{ route('categories.index') }}" aria-expanded="false">
                       <i class="fa fa-bars" aria-hidden="true"></i>
                       <span class="hide-menu">
-                          Danh mục sản phẩm
+                          Category
                       </span></a>
               </li>
-              <li class="sidebar-item">
+              {{-- <li class="sidebar-item">
                   <a class="sidebar-link waves-effect waves-dark sidebar-link {{ checkUrlActive(route('admin-index-product')) }}"
                       href="{{ route('admin-index-product') }}" aria-expanded="false"><i
                           class="mdi mdi-chart-bar"></i><span class="hide-menu">Sản
@@ -48,8 +48,8 @@
                       </li>
 
                   </ul>
-              </li>
-          </ul> --}}
+              </li> --}}
+          </ul>
       </nav>
       <!-- End Sidebar navigation -->
   </div>
