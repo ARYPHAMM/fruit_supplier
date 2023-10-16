@@ -28,7 +28,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = checkValidate(['customer_name' => 'required']);
+        $validator = checkValidate(['customer_name' => 'required','order_details'=>'required|array|min:1'],['order_details.required'=>"Please select at least one product"]);
         if ($validator)
             return back()->withErrors($validator->errors())->withInput();
         $order = $this->saveOrder($request);
@@ -108,10 +108,8 @@ class OrderController extends Controller
             $order->delete();
         return redirect()->back()->with('success', 'Remove successfully');
     }
-    // public function show(Order $order = null)
-    // {
-    //     if (!is_null($order))
-    //         $order->delete();
-    //     return redirect()->back()->with('success', 'Remove successfully');
-    // }
+    public function show(Order $order = null)
+    {
+        return view('orders.show',['item'=>$order]);
+    }
 }

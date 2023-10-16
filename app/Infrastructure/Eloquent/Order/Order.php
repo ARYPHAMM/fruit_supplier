@@ -11,12 +11,16 @@ class Order extends BaseModel
   protected $table = "orders";
   protected $primaryKey = 'id';
   protected $guarded = [];
+  protected $appends = ['total'];
   public function orderDetails()
   {
     return $this->hasMany(OrderDetail::class, 'order_id', 'id');
   }
-  public function orderDetailsPivot()
+  public function getTotalAttribute()
   {
-    return $this->belongsToMany(Weight::class,"commodity_weights", "commodity_id", "weight_id");
+    $total = 0;
+    foreach ($this->orderDetails as $key => $value)
+      $total += $value->price * $value->quantity;
+    return $total;
   }
 }

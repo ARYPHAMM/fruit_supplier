@@ -5,11 +5,8 @@ namespace App\Infrastructure\Eloquent\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
-// use Spatie\Permission\Traits\HasRoles;
-class User extends Authenticatable implements MustVerifyEmail //,HasMedia
+
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     // use HasMediaTrait;

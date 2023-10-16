@@ -24,15 +24,19 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->customer_name }}</td>
                                     
-                                    {{-- <td>{{ number_format($item->price, 0, ',', '.')
-                                         }}</td> --}}
+                                    <td>{{ number_format($item->total, 0, ',', '.')
+                                         }}</td>
 
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <a href="{{ route('orders.edit', ['order' => $item->id]) }}">
-                                                <i class="fas mx-1 fa-edit    text-warning"></i>
+                                            <a class="d-block" href="{{ route('orders.show', ['order' => $item->id]) }}">
+                                                <i class="fa fa-eye mx-3" aria-hidden="true"></i>
                                             </a>
-                                            <form onsubmit="return confirm('Are you sure');" class=" mx-1"
+                                            <a class="d-block" href="{{ route('orders.edit', ['order' => $item->id]) }}">
+                                                <i class="fas  fa-edit    text-warning"></i>
+                                            </a>
+                                           
+                                            <form onsubmit="return confirm('Are you sure');" 
                                                 action="{{ route('orders.destroy', ['order' => $item->id]) }}"
                                                 method="post">
                                                 @method('delete')

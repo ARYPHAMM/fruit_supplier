@@ -10,7 +10,7 @@
                     @else
                         Update
                     @endif
-                    product
+                    fruit
                 </h4>
                 <input type="hidden" name="id" value="{{ @$item->id }}">
                 <div class="row flex-column">

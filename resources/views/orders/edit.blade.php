@@ -23,8 +23,7 @@
                                 <input type="hidden" :name="`order_details[${index}][quantity]`" :value="item.quantity">
                                 <input type="hidden" :name="`order_details[${index}][product_name]`"
                                     :value="item.name">
-                                <input type="hidden" :name="`order_details[${index}][price]`"
-                                    :value="item.price">
+                                <input type="hidden" :name="`order_details[${index}][price]`" :value="item.price">
                                 <input type="hidden" :name="`order_details[${index}][unit]`" :value="item.unit">
                                 <input type="hidden" :name="`order_details[${index}][category_name]`"
                                     :value="item.category_name">
@@ -48,7 +47,7 @@
                                     <span v-html="(number_format(item.quantity*item.price, 0, ',', '.'))"></span>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <button v-on:click="remove(index)" type="buttom" class="btn btn-danger">
+                                    <button v-on:click="remove(index)" type="button" class="btn btn-danger">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </div>
@@ -58,11 +57,19 @@
                             <b>Total:</b> <span v-html="(number_format(total, 0, ',', '.'))"></span>
                         </div>
                     </div>
-                    <div class="col-md-6 d-block m-auto col-12">
+                    <div class="text-center">
+                        @if ($errors->has('order_details'))
+                                    @foreach ($errors->get('order_details') as $error)
+                                        <span class="text-danger"> {!! $error !!} </span>
+                                    @endforeach
+                                @endif
+                    </div>
+                     
+                    <div class="col-md-6 d-block m-auto col-12 border my-1 py-1">
                         <div class="form-group row">
                             <label class="col-sm-3 text-end control-label col-form-label" for="">Category</label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="category_id" v-on:change="handlerCategory">
+                                <select class="form-control" name="category_id" v-on:change="handleCategory">
                                     <option value="">Choose category</option>
                                     @foreach ($categories as $cate)
                                         <option value="{{ $cate->id }}"
@@ -77,19 +84,18 @@
                                 @endif
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 d-block m-auto col-12">
                         <div class="form-group row">
-                            <label class="col-sm-3 text-end control-label col-form-label" for="">Product</label>
+                            <label class="col-sm-3 text-end control-label col-form-label" for="">Fruit</label>
                             <div class="col-sm-9">
-                                <select class="form-control" v-on:change="handlerProduct">
-                                    <option value="">Choose product</option>
+                                <select class="form-control" v-on:change="handleProduct">
+                                    <option value="">Choose fruit</option>
                                     <option :value="item.id" v-for="item,index in items" :key="index"
                                         v-html="`Name: ${item.name}, unit: ${item.unit}, price: ${number_format(item.price, 0, ',', '.')}`">
                                     </option>
                                 </select>
                             </div>
                         </div>
+                        
                     </div>
                     <div class="col-md-6 d-block m-auto col-12">
                         <div class="form-group row">
@@ -118,7 +124,7 @@
         </form>
     </div>
     <script>
-       var form =  new Vue({
+        var form = new Vue({
             data() {
                 return {
                     items: [],
@@ -133,7 +139,6 @@
                     })
                     return total;
                 }
-                
             },
             methods: {
                 number_format(number, decimals, dec_point, thousands_sep) {
@@ -146,7 +151,7 @@
                     str[0] = parts.join(thousands_sep ? thousands_sep : ',');
                     return str.join(dec_point ? dec_point : '.');
                 },
-                async handlerCategory($event) {
+                async handleCategory($event) {
                     this.items = [];
                     if ($event.target.value.length)
                         await axios({
@@ -158,7 +163,7 @@
                         })
                         .catch((error) => {});
                 },
-                handlerProduct($event) {
+                handleProduct($event) {
                     if ($event.target.value.length) {
                         let item = this.items.find((item) => item.id == $event.target.value);
                         this.selected_products.push(item);
@@ -166,7 +171,8 @@
                         this.$set(this.selected_products[index], 'quantity', 1);
                         this.$set(this.selected_products[index], 'product_id', item.id);
                         this.$set(this.selected_products[index], 'id', null);
-                        this.$set(this.selected_products[index], 'category_name', item.category?item.category.name : '');
+                        this.$set(this.selected_products[index], 'category_name', item.category ? item.category
+                            .name : '');
                     }
                 },
                 remove(location) {
@@ -174,17 +180,16 @@
                 }
             },
         }).$mount('#form-1');
-
         <?php foreach(old('order_details',$order_details) as $key1 => $val1){ ?>
-            form.selected_products.push({
-                id: "{{ $val1['id'] }}",
-                name: "{{ $val1['product_name'] }}",
-                product_id: "{{ $val1['product_id'] }}",
-                category_name: "{{ $val1['category_name'] }}",
-                price: "{{ $val1['price'] }}",
-                unit: "{{ $val1['unit'] }}",
-                quantity: "{{ $val1['quantity'] }}"
-            })
+        form.selected_products.push({
+            id: "{{ $val1['id'] }}",
+            name: "{{ $val1['product_name'] }}",
+            product_id: "{{ $val1['product_id'] }}",
+            category_name: "{{ $val1['category_name'] }}",
+            price: "{{ $val1['price'] }}",
+            unit: "{{ $val1['unit'] }}",
+            quantity: "{{ $val1['quantity'] }}"
+        })
         <?php } ?>
     </script>
 @endsection

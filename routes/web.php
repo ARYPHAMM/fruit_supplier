@@ -30,5 +30,5 @@ Route::get('get-products', 'ProductController@indexJson')->middleware('auth')->n
 // start order
 Route::resource('orders', 'OrderController')->except(['create', 'edit', 'update','show'])->middleware('auth');
 Route::get('orders/edit/{order?}', 'OrderController@edit')->name('orders.edit')->middleware('auth');
-// Route::get('orders/show/{order?}', 'OrderController@show')->name('orders.show')->middleware('auth');
+Route::get('orders/show/{order?}', 'OrderController@show')->name('orders.show')->middleware('auth');
 // end order
