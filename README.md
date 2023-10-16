@@ -1,10 +1,10 @@
 <center>
-    <h1 style="text-align:center;display:block;">Fruit Supplier (Straitsfinancial test round)</h1>
+    <h1 style="text-align:center;display:block;">Fruit Supplier (Test round of Straits Financial)</h1>
 </center>
 <div>
   - Required
   <pre>
-      + Php 7.2 - 8.0 (current project use laravel 7)
+      + Php version 7.2 - 8.0 (current project use laravel 7)
   </pre>
 </div>
 <div>
@@ -19,7 +19,7 @@
     </pre>
 </div>
 <div>
-    - Staff account
+    - Staff account for login 
     <pre>
         + Email: staff@localhost.com
         + Password: 123456
