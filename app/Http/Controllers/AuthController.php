@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest\LoginRequest;
 use App\Infrastructure\Eloquent\User\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -17,7 +18,7 @@ class AuthController extends Controller
   public function login()
   {
     if (Auth::check())
-      return redirect()->route('login');
+      return redirect()->route('home');
     return view("auth.login");
   }
   public function logout()
@@ -30,5 +31,12 @@ class AuthController extends Controller
     if (Auth::attempt($credential))
       return redirect()->route('home')->with('success', 'Logged in successfully');
     return redirect()->back()->with('error', 'Incorrect account or password');
+  }
+  public function show(Request $request)
+  {
+    return $request->user();
+  }
+  public function home(){
+    return view('home');
   }
 }

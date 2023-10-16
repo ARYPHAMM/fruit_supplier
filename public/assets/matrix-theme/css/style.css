@@ -221,3 +221,14 @@ span.close-top-right {
     max-height: 100%;
     object-fit: contain;
   }
+/* Chrome, Safari, Edge, Opera */
+.hidden-number-arrow.input::-webkit-outer-spin-button,
+.hidden-number-arrow.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.hidden-number-arrow.input[type=number] {
+  -moz-appearance: textfield;
+}

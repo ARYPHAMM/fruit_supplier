@@ -16,6 +16,16 @@ class Product extends BaseModel
   }
   public static function defaultUnits()
   {
-    return ['kg','pcs','pack'];
+    return ['kg', 'pcs', 'pack'];
+  }
+  public function scopeSearch($query)
+  {
+    $search = @request()->query('search');
+    if (!is_null($search))
+      $query->where("name", 'like', "%{$search}%");
+    $filter_data = request()->only('category_id');
+    foreach ($filter_data as $key => $value)
+      if (!is_null($value))
+        $query->where($key, $value);
   }
 }

@@ -20,6 +20,14 @@
                           Product
                       </span></a>
               </li>
+              <li class="sidebar-item">
+                  <a class="sidebar-link waves-effect waves-dark sidebar-link {{ checkUrlActive([route('orders.index'), route('orders.edit')]) ? 'selected' : '' }}"
+                      href="{{ route('orders.index') }}" aria-expanded="false">
+                      <i class="fas fa-box    "></i>
+                      <span class="hide-menu">
+                          Order
+                      </span></a>
+              </li>
               {{-- <li class="sidebar-item">
                   <a class="sidebar-link waves-effect waves-dark sidebar-link {{ checkUrlActive(route('admin-index-product')) }}"
                       href="{{ route('admin-index-product') }}" aria-expanded="false"><i

@@ -20,6 +20,10 @@ class ProductController extends Controller
         $items = Product::OrderBy('created_at', 'desc')->paginate(15);
         return view('products.index', ['items' => $items]);
     }
+    public function indexJson(){
+        $items = Product::query()->search()->with('category')->get();
+        return apiOk($items);
+    }
     /**
      * Store a newly created resource in storage.
      *
