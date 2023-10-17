@@ -25,3 +25,6 @@
         + Password: 123456
     </pre>
 </div>
+<div>
+  Demo url: http://fruit.joypham.net (You can refer to the demo page I uploaded) 
+</div>
